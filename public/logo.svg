@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img" aria-label="Your Garden Tools Ludo Neven">
+  <defs>
+    <linearGradient id="red" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f21c12"/><stop offset="1" stop-color="#b70e0a"/></linearGradient>
+    <linearGradient id="blue" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#284e72"/><stop offset="1" stop-color="#142d43"/></linearGradient>
+    <linearGradient id="green" x1="0" x2="1"><stop stop-color="#2f8a24"/><stop offset="1" stop-color="#77b82a"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="900" height="330" rx="20" fill="#fff"/>
+  <g filter="url(#shadow)">
+    <path d="M70 165C25 125 30 68 103 30c18 64 1 112-33 135Z" fill="url(#green)"/>
+    <path d="M85 167C120 118 156 91 211 86c-4 60-45 91-126 81Z" fill="#4b9f27"/>
+    <path d="M70 168c23-50 67-91 117-120" fill="none" stroke="#1c6f19" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="230" y="74" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="800" font-size="42" fill="#4c9325">your</text>
+  <text x="170" y="168" font-family="Arial Black,Arial,Helvetica,sans-serif" font-weight="900" font-size="84" letter-spacing="-5"><tspan fill="url(#red)">GARDEN</tspan><tspan fill="url(#blue)">TOOLS</tspan></text>
+  <path d="M173 184h488" stroke="#62972f" stroke-width="5"/>
+  <text x="270" y="222" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="29" letter-spacing="14" fill="#4d9829">LUDO NEVEN</text>
+  <text x="180" y="266" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="18" letter-spacing="2" fill="#202b25">ADVIES | ONDERHOUD | REPARATIE | VERKOOP</text>
+  <text x="268" y="294" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="18" letter-spacing="2" fill="#202b25">VAN TUIN &amp; PARK GEREEDSCHAPPEN</text>
+  <g transform="translate(680 56)" filter="url(#shadow)">
+    <path d="M82 132 118 48h19l-34 85" fill="none" stroke="#1d2722" stroke-width="10" stroke-linecap="round"/>
+    <path d="M45 137h119l-10 37H55Z" fill="#d51c18" stroke="#1d2722" stroke-width="6"/>
+    <path d="M77 109h63l26 35H56Z" fill="#2f3935" stroke="#1d2722" stroke-width="6"/>
+    <circle cx="72" cy="177" r="20" fill="#1c2421"/><circle cx="72" cy="177" r="9" fill="#a7b0aa"/>
+    <circle cx="149" cy="177" r="20" fill="#1c2421"/><circle cx="149" cy="177" r="9" fill="#a7b0aa"/>
+    <path d="M118 48c7-27 16-40 29-40h25" fill="none" stroke="#1d2722" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>
