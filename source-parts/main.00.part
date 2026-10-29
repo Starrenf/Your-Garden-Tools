@@ -1,0 +1,33 @@
+import React,{useEffect,useMemo,useRef,useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import './styles.css';
+
+const STORE='ygt-vite-v3';
+
+const RADIO_STATIONS=[
+ {id:'npo1',name:'NPO Radio 1',tag:'Nieuws & actualiteit',short:'1',stream:'https://icecast.omroep.nl/radio1-bb-mp3'},
+ {id:'npo2',name:'NPO Radio 2',tag:'Muziek & verhalen',short:'2',stream:'https://icecast.omroep.nl/radio2-bb-mp3'},
+ {id:'3fm',name:'NPO 3FM',tag:'Nieuwe muziek',short:'3FM',stream:'https://icecast.omroep.nl/3fm-bb-mp3'},
+ {id:'qmusic',name:'Qmusic',tag:'Hits',short:'Q',stream:'https://stream.qmusic.nl/qmusic/mp3'},
+ {id:'538',name:'Radio 538',tag:'Hits & entertainment',short:'538',stream:'https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3'},
+ {id:'sky',name:'Sky Radio',tag:'Non-stop hits',short:'SKY',stream:'https://playerservices.streamtheworld.com/api/livestream-redirect/SKYRADIO.mp3'},
+ {id:'radio10',name:'Radio 10',tag:'De grootste hits',short:'10',stream:'https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO10.mp3'},
+ {id:'veronica',name:'Radio Veronica',tag:'Pop & rock',short:'V',stream:'https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICA.mp3'}
+];
+
+const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(n||0);
+const fmt=d=>new Intl.DateTimeFormat('nl-NL',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(d));
+const icons={home:'⌂',users:'◎',machines:'◉',jobs:'▣',invoice:'▤',radio:'♫',search:'⌕',plus:'＋',arrow:'→',phone:'☎',tool:'⌁',check:'✓',close:'×'};
+const I=({n})=><span className="ico">{icons[n]||'•'}</span>;
+const seed={
+ customers:[{id:'c1',name:'Jan Janssen',phone:'06 12345678',email:'jan@example.nl',address:'Veldstraat 12',city:'Bunde'},{id:'c2',name:'Sophie Peters',phone:'06 87654321',email:'sophie@example.nl',address:'Kerklaan 4',city:'Meerssen'}],
+ machines:[{id:'m1',customerId:'c1',type:'Grasmaaier',brand:'Husqvarna',model:'LB 553SE',serial:'20162300049',engine:'Honda GCV 170'},{id:'m2',customerId:'c2',type:'Heggenschaar',brand:'Stihl',model:'HS 45',serial:'STI-884201',engine:'2-takt'}],
+ jobs:[{id:'j1',number:'WO-2026-0042',customerId:'c1',machineId:'m1',title:'Jaarlijks onderhoud',complaint:'Start moeizaam, jaarlijkse onderhoudsbeurt gewenst.',diagnosis:'Bougie vervuild, mes bot. Verder normale slijtage.',status:'In uitvoering',created:'2026-10-22',due:'2026-10-28',labor:[{description:'Onderhoudsbeurt benzinemaaier',qty:1,price:52.5}],parts:[{description:'Service set Honda GCV 135/160',qty:1,price:25.10},{description:'Reinigingsmiddelen',qty:2,price:2.09}]},{id:'j2',number:'WO-2026-0041',customerId:'c2',machineId:'m2',title:'Startprobleem',complaint:'Machine slaat af bij gas geven.',diagnosis:'Brandstoffilter en bougie controleren.',status:'Wachten op akkoord',created:'2026-10-21',due:'2026-10-25',labor:[{description:'Diagnose',qty:.5,price:52.5}],parts:[]}],
+ invoices:[{id:'i1',number:'20260037',customer:'P. Willems',amount:128.26,status:'Betaald',date:'2026-10-18'}]
+};
+function load(){try{return JSON.parse(localStorage.getItem(STORE))||seed}catch{return seed}}
+const badge=s=>s==='Gereed'||s==='Betaald'?'green':s==='Wachten op akkoord'?'amber':s==='In uitvoering'?'purple':'blue';
+
+function App(){const[data,setData]=useState(load);const[admin,setAdmin]=useState(location.hash.includes('werkplaats'));useEffect(()=>localStorage.setItem(STORE,JSON.stringify(data)),[data]);useEffect(()=>{const f=()=>setAdmin(location.hash.includes('werkplaats'));addEventListener('hashchange',f);return()=>removeEventListener('hashchange',f)},[]);return admin?<Admin data={data} setData={setData} exit={()=>location.hash='/'}/>:<Public enter={()=>location.hash='/werkplaats'}/>}
+
+function Public({enter}){return <div className="public"><header className="pubnav"><a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.png" alt="Your Garden Tools logo"/></a><nav><a href="#diensten">Diensten</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a><button onClick={enter}>Werkplaats</button></nav></header><main id="top"><section className="hero"><div className="heroCopy"><span className="eyebrow">VAKMANSCHAP UIT BUNDE</span><div className="heroLogoFrame"><img className="heroLogo" src="/logo.png" alt="Your Garden Tools"/></div><h1>Onderhoud en reparatie<br/><em>met persoonlijke service.</em></h1><p>Voor grasmaaiers, heggenscharen en andere tuin- en parkmachines. Duidelijke afspraken, deskundig advies en aandacht voor uw machine.</p><div className="actions"><a className="primary" href="tel:+31629575336"><I n="phone"/> Bel voor een afspraak</a><a className="secondary" href="#diensten">Bekijk onze diensten <I n="arrow"/></a></div><div className="trust"><span>✓</span><div><b>Duidelijke afspraken</b><small>Voor particulieren & professionals</small></div></div></div><div className="heroCard brandPreviewCard"><div className="brandShowcase"><img src="/logo.png" alt="Your Garden Tools logo"/><div className="brandInfo"><div><small>Werkplaats</small><b>Ingenopestraat 6 · 6241 BZ Bunde</b></div><div><small>Contact</small><b>043 - 365 41 83 · 06 - 29 57 53 36</b></div><div><small>E-mail</small><b>info@yourgardentools.nl</b></div></div></div><div className="heroCardBottom"><span><small>Specialist in</small><b>Tuin- & parkmachines</b></span><i>✓</i></div><div className="float"><strong>Jaarlijkse check-up</strong><small>Voorkom stilstand</small></div></div></section><section classNa
