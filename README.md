@@ -27,5 +27,8 @@ Open daarna de lokale URL die Vite toont (meestal `http://localhost:5173`).
 ## Logo's
 De alternatieve logo's staan in `public/logos/` zodat eenvoudig kan worden gewisseld als Ludo een andere variant kiest.
 
+## Deployment
+Vercel deployment trigger: 29-10-2026.
+
 ## Volgende productiestap
 Voor echte klantgegevens: authenticatie + centrale database (bijv. Supabase), RLS/beveiliging, server-side factuurnummering en PDF-generatie.
