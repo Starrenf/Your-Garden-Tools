@@ -6,6 +6,7 @@ const readParts=(name,count)=>Array.from({length:count},(_,i)=>readFileSync(join
 const mainParts=readParts('main',5);
 // Herstel exact het ene teken dat op de transportgrens tussen part 02 en 03 hoort.
 mainParts[2]+='<';
-writeFileSync('src/main.jsx',mainParts.join(''),'utf8');
+const main=mainParts.join('').replaceAll('/logo.png','/logo.jpg');
+writeFileSync('src/main.jsx',main,'utf8');
 writeFileSync('src/styles.css',readParts('styles',5).join(''),'utf8');
-console.log('Restored exact Your Garden Tools v6 source from supplied ZIP parts.');
+console.log('Restored exact Your Garden Tools v6 source and selected Proposal 4 web logo.');
