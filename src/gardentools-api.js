@@ -17,12 +17,27 @@ export const supabase = supabaseConfigured
 const emptyData = () => ({ customers: [], machines: [], jobs: [], invoices: [] });
 const throwIfError = ({ error }) => { if (error) throw error; };
 
-export const getRole = (session) => session?.user?.app_metadata?.role || null;
-export const getDisplayName = (session) =>
+export const getDisplayName = (session, profile) =>
+  profile?.display_name ||
   session?.user?.user_metadata?.display_name ||
   session?.user?.user_metadata?.full_name ||
   session?.user?.email ||
   'Gebruiker';
+
+export async function getProfile() {
+  if (!supabase) return null;
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError) throw sessionError;
+  const userId = sessionData.session?.user?.id;
+  if (!userId) return null;
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('user_id,email,display_name,role,must_change_password,password_changed_at,is_active')
+    .eq('user_id', userId)
+    .single();
+  if (error) throw error;
+  return data;
+}
 
 const mapCustomer = (r) => ({
   id: r.id,
@@ -103,6 +118,16 @@ export async function signOut() {
   if (!supabase) return;
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
+}
+
+export async function changeInitialPassword(currentPassword, newPassword) {
+  if (!supabase) throw new Error('Supabase is niet beschikbaar.');
+  const { data, error } = await supabase.functions.invoke('change-initial-password', {
+    body: { currentPassword, newPassword },
+  });
+  if (error) throw error;
+  if (data?.error) throw new Error(data.error);
+  return true;
 }
 
 export async function loadAppData(role) {
