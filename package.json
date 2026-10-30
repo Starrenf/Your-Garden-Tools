@@ -1,12 +1,12 @@
 {
   "name": "your-garden-tools",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.6.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs",
+    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs",
+    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
