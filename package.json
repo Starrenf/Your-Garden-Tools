@@ -4,9 +4,9 @@
   "version": "0.6.1",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v12-inline-logo.mjs",
+    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v12-inline-logo.mjs",
+    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
