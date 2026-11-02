@@ -7,24 +7,24 @@ const readParts=(name,count)=>Array.from({length:count},(_,i)=>readFileSync(join
 const mainParts=readParts('main',5);
 // Herstel exact het ene teken dat op de transportgrens tussen part 02 en 03 hoort.
 mainParts[2]+='<';
-let main=mainParts.join('').replaceAll('/logo.png','/logo.jpg');
+let main=mainParts.join('').replaceAll('/logo.png','/logo-honda.jpg');
 
-const navOld=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.jpg" alt="Your Garden Tools logo"/></a>`;
-const navNew=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.jpg" alt="Your Garden Tools logo"/><span className="navBrandText"><strong>Ludo Neven</strong><small>Tuin- & parkmachines</small></span></a>`;
+const navOld=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo-honda.jpg" alt="Your Garden Tools logo"/></a>`;
+const navNew=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><span className="navBrandText"><strong>Ludo Neven</strong><small>Tuin- & parkmachines</small></span></a>`;
 main=main.replace(navOld,navNew);
 
-const heroOld=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo.jpg" alt="Your Garden Tools"/></div>`;
-const heroNew=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo.jpg" alt="Your Garden Tools"/></div><div className="brandTextBlock"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div>`;
+const heroOld=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo-honda.jpg" alt="Your Garden Tools"/></div>`;
+const heroNew=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo-honda.jpg" alt="Your Garden Tools"/></div><div className="brandTextBlock"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div>`;
 main=main.replace(heroOld,heroNew);
 
-const showcaseOld=`<img src="/logo.jpg" alt="Your Garden Tools logo"/><div className="brandInfo">`;
-const showcaseNew=`<img src="/logo.jpg" alt="Your Garden Tools logo"/><div className="showcaseBrandText"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div><div className="brandInfo">`;
+const showcaseOld=`<img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><div className="brandInfo">`;
+const showcaseNew=`<img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><div className="showcaseBrandText"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div><div className="brandInfo">`;
 main=main.replace(showcaseOld,showcaseNew);
 
 const css=readParts('styles',5).join('')+`
 /* Leesbare bedrijfsinformatie los van het beeldmerk */
 .logoFrame{gap:14px;justify-content:flex-start}
-.logoFrame img{width:190px;height:auto}
+.logoFrame img{width:205px;height:auto}
 .navBrandText{display:flex;flex-direction:column;line-height:1.1;min-width:150px}
 .navBrandText strong{font-size:15px;letter-spacing:-.02em;color:var(--dark)}
 .navBrandText small{font-size:10px;color:#78847a;margin-top:5px;white-space:nowrap}
@@ -36,14 +36,15 @@ const css=readParts('styles',5).join('')+`
 .showcaseBrandText strong{font-size:20px;letter-spacing:-.03em;color:var(--dark)}
 .showcaseBrandText span{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#6f984a}
 .showcaseBrandText small{font-size:11px;color:#718076}
-@media(max-width:1100px){.logoFrame img{width:170px}.navBrandText strong{font-size:14px}.navBrandText small{font-size:9px}}
-@media(max-width:900px){.navBrandText{display:none}.logoFrame img{width:min(220px,42vw)}.heroLogoFrame{margin-bottom:10px}.brandTextBlock strong{font-size:22px}.brandTextBlock span{font-size:11px}.brandTextBlock small{font-size:12px}}
-@media(max-width:760px){.logoFrame img{width:168px}.brandTextBlock{margin-bottom:14px}}
-@media(max-width:430px){.logoFrame img{width:145px}}
+@media(max-width:1100px){.logoFrame img{width:185px}.navBrandText strong{font-size:14px}.navBrandText small{font-size:9px}}
+@media(max-width:900px){.navBrandText{display:none}.logoFrame img{width:min(235px,44vw)}.heroLogoFrame{margin-bottom:10px}.brandTextBlock strong{font-size:22px}.brandTextBlock span{font-size:11px}.brandTextBlock small{font-size:12px}}
+@media(max-width:760px){.logoFrame img{width:178px}.brandTextBlock{margin-bottom:14px}}
+@media(max-width:430px){.logoFrame img{width:152px}}
 `;
 
+// Legacy logo wordt nog opgebouwd voor backwards compatibility; de site gebruikt logo-honda.jpg.
 const logoBase64=readParts('logo',3).join('');
 writeFileSync('public/logo.jpg',Buffer.from(logoBase64,'base64'));
 writeFileSync('src/main.jsx',main,'utf8');
 writeFileSync('src/styles.css',css,'utf8');
-console.log('Restored Your Garden Tools v7 responsive/flashy build with simplified logo.');
+console.log('Restored Your Garden Tools with Honda mower logo.');
