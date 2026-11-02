@@ -7,18 +7,18 @@ const readParts=(name,count)=>Array.from({length:count},(_,i)=>readFileSync(join
 const mainParts=readParts('main',5);
 // Herstel exact het ene teken dat op de transportgrens tussen part 02 en 03 hoort.
 mainParts[2]+='<';
-let main=mainParts.join('').replaceAll('/logo.png','/logo-honda.jpg');
+let main=mainParts.join('').replaceAll('/logo.png','/logo.jpg');
 
-const navOld=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo-honda.jpg" alt="Your Garden Tools logo"/></a>`;
-const navNew=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><span className="navBrandText"><strong>Ludo Neven</strong><small>Tuin- & parkmachines</small></span></a>`;
+const navOld=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.jpg" alt="Your Garden Tools logo"/></a>`;
+const navNew=`<a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.jpg" alt="Your Garden Tools logo"/><span className="navBrandText"><strong>Ludo Neven</strong><small>Tuin- & parkmachines</small></span></a>`;
 main=main.replace(navOld,navNew);
 
-const heroOld=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo-honda.jpg" alt="Your Garden Tools"/></div>`;
-const heroNew=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo-honda.jpg" alt="Your Garden Tools"/></div><div className="brandTextBlock"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div>`;
+const heroOld=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo.jpg" alt="Your Garden Tools"/></div>`;
+const heroNew=`<div className="heroLogoFrame"><img className="heroLogo" src="/logo.jpg" alt="Your Garden Tools"/></div><div className="brandTextBlock"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div>`;
 main=main.replace(heroOld,heroNew);
 
-const showcaseOld=`<img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><div className="brandInfo">`;
-const showcaseNew=`<img src="/logo-honda.jpg" alt="Your Garden Tools logo"/><div className="showcaseBrandText"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div><div className="brandInfo">`;
+const showcaseOld=`<img src="/logo.jpg" alt="Your Garden Tools logo"/><div className="brandInfo">`;
+const showcaseNew=`<img src="/logo.jpg" alt="Your Garden Tools logo"/><div className="showcaseBrandText"><strong>Ludo Neven</strong><span>Advies · Onderhoud · Reparatie · Verkoop</span><small>Tuin- & parkmachines</small></div><div className="brandInfo">`;
 main=main.replace(showcaseOld,showcaseNew);
 
 const css=readParts('styles',5).join('')+`
@@ -42,9 +42,10 @@ const css=readParts('styles',5).join('')+`
 @media(max-width:430px){.logoFrame img{width:152px}}
 `;
 
-// Legacy logo wordt nog opgebouwd voor backwards compatibility; de site gebruikt logo-honda.jpg.
-const logoBase64=readParts('logo',3).join('');
-writeFileSync('public/logo.jpg',Buffer.from(logoBase64,'base64'));
+// Eén canoniek logo voor alle modules. Dit voorkomt padverschillen tussen website,
+// login, werkplaats en boekhouding.
+const hondaLogo=readFileSync('public/logo-honda.jpg');
+writeFileSync('public/logo.jpg',hondaLogo);
 writeFileSync('src/main.jsx',main,'utf8');
 writeFileSync('src/styles.css',css,'utf8');
-console.log('Restored Your Garden Tools with Honda mower logo.');
+console.log('Restored Your Garden Tools with one canonical Honda logo asset.');
