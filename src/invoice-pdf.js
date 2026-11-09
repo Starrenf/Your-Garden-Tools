@@ -1,4 +1,3 @@
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { INVOICE_COMPANY as company } from './invoice-company.js';
 
 const money = n => 'EUR ' + Number(n || 0).toFixed(2).replace('.', ',');
@@ -8,7 +7,6 @@ const dateNL = d => {
   return a.length === 3 ? a[2]+'-'+a[1]+'-'+a[0] : String(d);
 };
 const safe = v => String(v == null ? '' : v).replace(/[\u2013\u2014]/g,'-').replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\u2022/g,'-');
-const dark = rgb(.1,.17,.13), green = rgb(.32,.53,.22), muted = rgb(.41,.47,.42), line = rgb(.85,.89,.84);
 const W=595.28,H=841.89;
 function wrap(text, font, size, maxWidth) {
   const words = safe(text).split(/\s+/).filter(Boolean), lines=[];
@@ -36,6 +34,8 @@ async function fetchLogo(pdf) {
   } catch(_) { return null; }
 }
 export async function invoicePdfBlob(invoice, opts={}) {
+  const { PDFDocument, StandardFonts, rgb } = await import('pdf-lib');
+  const dark = rgb(.1,.17,.13), green = rgb(.32,.53,.22), muted = rgb(.41,.47,.42), line = rgb(.85,.89,.84);
   if(!invoice?.number)throw new Error('Factuurnummer ontbreekt');
   const pdf=await PDFDocument.create();
   pdf.setTitle('Factuur '+invoice.number+' - '+company.name);
