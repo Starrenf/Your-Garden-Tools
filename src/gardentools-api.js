@@ -41,11 +41,20 @@ export async function getProfile() {
 
 const mapCustomer = (r) => ({
   id: r.id,
+  customerNumber: r.customer_number || '',
   name: r.name,
+  companyName: r.company_name || '',
   phone: r.phone || '',
   email: r.email || '',
+  street: r.street || '',
+  houseNumber: r.house_number || '',
+  postalCode: r.postal_code || '',
   address: [r.street, r.house_number].filter(Boolean).join(' '),
   city: r.city || '',
+  notes: r.notes || '',
+  active: r.active !== false,
+  createdAt: r.created_at || '',
+  updatedAt: r.updated_at || '',
 });
 
 const mapMachine = (r) => ({
@@ -179,15 +188,37 @@ export async function loadAppData(role) {
   };
 }
 
+const customerInput = (form) => ({
+  name: String(form.name || '').trim(),
+  company_name: String(form.companyName || '').trim() || null,
+  phone: String(form.phone || '').trim() || null,
+  email: String(form.email || '').trim() || null,
+  street: String(form.street ?? form.address ?? '').trim() || null,
+  house_number: String(form.houseNumber || '').trim() || null,
+  postal_code: String(form.postalCode || '').trim() || null,
+  city: String(form.city || '').trim() || null,
+  notes: String(form.notes || '').trim() || null,
+});
+
 export async function createCustomer(form) {
   if (!supabase) throw new Error('Supabase is niet beschikbaar.');
-  const { data, error } = await supabase.from('customers').insert({
-    name: form.name,
-    phone: form.phone || null,
-    email: form.email || null,
-    street: form.address || null,
-    city: form.city || null,
-  }).select().single();
+  const body = customerInput(form);
+  if (!body.name) throw new Error('Vul de naam van de klant in.');
+  const { data, error } = await supabase.from('customers').insert(body).select('*').single();
+  if (error) throw error;
+  return mapCustomer(data);
+}
+
+export async function updateCustomer(customerId, form) {
+  if (!supabase) throw new Error('Supabase is niet beschikbaar.');
+  if (!customerId) throw new Error('Klant-ID ontbreekt.');
+  const body = customerInput(form);
+  if (!body.name) throw new Error('Vul de naam van de klant in.');
+  const { data, error } = await supabase.from('customers')
+    .update(body)
+    .eq('id', customerId)
+    .select('*')
+    .single();
   if (error) throw error;
   return mapCustomer(data);
 }
