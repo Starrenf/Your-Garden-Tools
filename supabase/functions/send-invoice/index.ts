@@ -41,6 +41,9 @@ Deno.serve(async(req:Request)=>{
    .eq('id',body.invoiceId).single();
  if(invoiceError||!invoice)return respond(404,{error:'Factuur niet gevonden.'});
  if(invoice.status!=='Definitief'||!invoice.pdf_path)return respond(409,{error:'Maak de factuur eerst definitief met opgeslagen PDF.'});
+ if(/^TEST[-_]/i.test(String(invoice.invoice_number)))return respond(409,{error:'Testfacturen mogen niet automatisch naar klanten worden verzonden.'});
+ if(Deno.env.get('INVOICE_BILLING_READY')!=='true')return respond(503,{error:'De volledige bedrijfsgegevens (KvK, btw en IBAN) zijn nog niet bevestigd. Automatische factuurmail staat uit.'});
+
  if(!validEmail(invoice.customer_email))return respond(400,{error:'Het e-mailadres op de factuur is ongeldig of ontbreekt.'});
  const resendKey=Deno.env.get('RESEND_API_KEY');
  const sender=Deno.env.get('INVOICE_FROM_EMAIL');
