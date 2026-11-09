@@ -19,9 +19,10 @@ if (!jsx.includes('const routeFromHash=')) {
 const originalHeader='<header className="pubnav"><a href="#top" className="logoFrame" aria-label="Your Garden Tools"><img src="/logo.png" alt="Your Garden Tools logo"/></a><nav><a href="#diensten">Diensten</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a><button onClick={enter}>Werkplaats</button></nav></header>';
 const newHeader=`<header className="pubnav"><a href="#/" className="logoFrame" aria-label="Your Garden Tools - Home"><img src="/logo.png" alt="Your Garden Tools logo"/></a><button type="button" className="public-menu-toggle" aria-label={menuOpen?'Menu sluiten':'Menu openen'} aria-expanded={menuOpen} aria-controls="public-main-menu" onClick={()=>setMenuOpen(x=>!x)}><span></span><span></span><span></span></button><nav id="public-main-menu" className={menuOpen?'public-nav-open':''} aria-label="Hoofdnavigatie"><a className={page==='home'?'active':''} aria-current={page==='home'?'page':undefined} href="#/" onClick={()=>setMenuOpen(false)}>Home</a><a className={page==='diensten'?'active':''} aria-current={page==='diensten'?'page':undefined} href="#/diensten" onClick={()=>setMenuOpen(false)}>Diensten</a><a className={page==='werkwijze'?'active':''} aria-current={page==='werkwijze'?'page':undefined} href="#/werkwijze" onClick={()=>setMenuOpen(false)}>Werkwijze</a><a className={page==='contact'?'active':''} aria-current={page==='contact'?'page':undefined} href="#/contact" onClick={()=>setMenuOpen(false)}>Contact</a><button onClick={()=>{setMenuOpen(false);enter()}}>Werkplaats</button></nav></header>`;
 if (!jsx.includes('public-menu-toggle')) {
- const headerPattern=/<header className="pubnav">[\\s\\S]*?<\\/header>/;
- if(!headerPattern.test(jsx))throw new Error('Public navigation header not found');
- jsx=jsx.replace(headerPattern,newHeader);
+ const headerStart=jsx.indexOf('<header className="pubnav">');
+ const headerEnd=jsx.indexOf('</header>',headerStart);
+ if(headerStart<0||headerEnd<0)throw new Error('Public navigation header not found');
+ jsx=jsx.slice(0,headerStart)+newHeader+jsx.slice(headerEnd+'</header>'.length);
 }
 jsx=jsx.replace('<main id="top">','<main id="top" className={"public-view page-"+page}>');
 jsx=jsx.replaceAll('href="#diensten"','href="#/diensten"').replaceAll('href="#contact"','href="#/contact"');
