@@ -1,0 +1,483 @@
+/*
+ * Your Garden Tools — Glass UI v1
+ * An original, Apple-inspired translucent treatment. No Apple assets or proprietary effects.
+ * Apply AFTER all existing v7-v19 styles. Keeps content surfaces high-contrast.
+ */
+:root {
+  --glass-paper: rgba(255,255,255,.73);
+  --glass-paper-strong: rgba(255,255,255,.88);
+  --glass-luminous: rgba(255,255,255,.94);
+  --glass-line: rgba(255,255,255,.82);
+  --glass-ink: #1b3022;
+  --glass-muted: #526556;
+  --glass-green: #719f40;
+  --glass-border: rgba(111,151,106,.20);
+  --glass-shadow: 0 18px 56px rgba(32,63,45,.105), 0 3px 10px rgba(32,63,45,.04);
+  --glass-shadow-hover: 0 24px 62px rgba(23,57,30,.16), 0 5px 18px rgba(18,39,27,.07);
+  --glass-radius: 22px;
+  --glass-blur: blur(24px) saturate(160%);
+}
+
+html { color-scheme:light; }
+body { background:#f0f5ed; }
+button, a { -webkit-tap-highlight-color:transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline:3px solid #608f3e;
+  outline-offset:3px;
+}
+:is(button,a,[role="button"]):not(:disabled) { touch-action:manipulation; }
+
+/* Public: daylight landscape creates real contrast behind the translucent chrome */
+.public {
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse 53% 33% at 8% 11%, rgba(188,220,150,.39),transparent 80%),
+    radial-gradient(ellipse 37% 31% at 100% 21%, rgba(143,195,166,.30),transparent 78%),
+    radial-gradient(ellipse 44% 29% at 54% 78%, rgba(206,226,183,.35),transparent 80%),
+    #f4f7f2;
+  color:var(--glass-ink);
+}
+.public .pubnav {
+  position:sticky;
+  top:0;
+  z-index:70;
+  height:100px;
+  background:linear-gradient(130deg,rgba(255,255,255,.85),rgba(249,255,245,.63));
+  border-bottom:1px solid rgba(255,255,255,.89);
+  box-shadow:0 1px 0 rgba(69,96,77,.07),0 9px 34px rgba(40,73,48,.07);
+  -webkit-backdrop-filter:var(--glass-blur);
+  backdrop-filter:var(--glass-blur);
+}
+.public .pubnav::after {
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:5%;
+  right:5%;
+  height:1px;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.98) 30%,rgba(134,172,118,.24) 72%,transparent);
+}
+.public .pubnav nav a {
+  position:relative;
+  color:#243d29;
+}
+.public .pubnav nav a.active {
+  color:#356c2b;
+}
+.public .pubnav nav button,
+.public .public-menu-toggle {
+  border:1px solid rgba(255,255,255,.72);
+  background:linear-gradient(155deg,rgba(255,255,255,.97),rgba(222,237,216,.78));
+  color:#294b29;
+  border-radius:999px;
+  box-shadow:inset 0 1px 1px #fff,0 6px 18px rgba(48,85,51,.10);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);
+  backdrop-filter:blur(14px) saturate(150%);
+}
+.public .pubnav nav button:hover,
+.public .public-menu-toggle:hover {
+  background:linear-gradient(145deg,#fff,rgba(208,234,193,.94));
+  box-shadow:inset 0 1px 1px #fff,0 10px 24px rgba(48,85,51,.16);
+  transform:translateY(-1px);
+}
+
+/* Hero glows softly behind the brand; text and logo stay sharp */
+.public .hero {
+  background:
+    radial-gradient(ellipse at 72% 18%,rgba(195,224,183,.47) 0,transparent 52%),
+    radial-gradient(ellipse at 5% 90%,rgba(223,237,204,.6) 0,transparent 55%),
+    linear-gradient(125deg,rgba(252,255,249,.78),rgba(224,238,217,.57));
+}
+.public .heroLogoFrame { position:relative; z-index:1; }
+.public .heroCopy h1 { color:#192c1f; text-wrap:balance; }
+.public .heroCopy>p { color:#465b4b; }
+.public .heroCard {
+  background:linear-gradient(140deg,rgba(255,255,255,.83),rgba(248,255,246,.48));
+  border:1px solid rgba(255,255,255,.93);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.95),0 26px 85px rgba(47,81,51,.16),0 8px 24px rgba(43,87,60,.08);
+  -webkit-backdrop-filter:blur(21px) saturate(142%);
+  backdrop-filter:blur(21px) saturate(142%);
+}
+.public .brandShowcase {
+  background:linear-gradient(153deg,rgba(255,255,255,.72),rgba(226,241,217,.58));
+  border:1px solid rgba(255,255,255,.88);
+}
+.public .brandInfo div {
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,255,255,.68));
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:0 5px 18px rgba(29,65,41,.06),inset 0 1px 0 rgba(255,255,255,.98);
+  -webkit-backdrop-filter:blur(11px);
+  backdrop-filter:blur(11px);
+}
+.public .brandInfo b { color:#223b29; }
+.public .brandInfo small { color:#4c6b56; }
+.public .float {
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:var(--glass-shadow),inset 0 1px 0 white;
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+.public .floatInline { transform:none; animation:none; }
+.public .trust>span {
+  background:rgba(255,255,255,.86);
+  box-shadow:inset 0 1px 0 white,0 4px 14px rgba(53,86,54,.1);
+  border:1px solid rgba(255,255,255,.92);
+}
+
+/* Pill-shaped glass controls */
+.public :is(.actions .primary,.actions .secondary,.contact>a),
+.primaryBtn,
+.invPrimary {
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.93),0 8px 22px rgba(53,98,41,.14);
+  transition:transform .22s cubic-bezier(.2,.75,.3,1),box-shadow .22s ease,background-color .22s ease;
+}
+.public .actions .primary, .primaryBtn, .invPrimary {
+  background:linear-gradient(145deg,#a2cc70 0%,#83bb4a 53%,#71aa38 100%);
+  color:#17301e;
+}
+.public .actions .secondary {
+  background:rgba(255,255,255,.72);
+  color:#284b31;
+  -webkit-backdrop-filter:blur(15px);
+  backdrop-filter:blur(15px);
+}
+.public :is(.actions .primary,.actions .secondary,.contact>a):hover,
+.primaryBtn:hover,
+.invPrimary:hover {
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 #fff,0 13px 27px rgba(47,94,47,.2);
+}
+
+/* Content uses mostly standard, more opaque materials for readability */
+.public .service {
+  background:linear-gradient(152deg,rgba(255,255,255,.97),rgba(249,253,245,.91));
+  border:1px solid rgba(212,230,207,.88);
+  border-top-color:#fff;
+  border-radius:var(--glass-radius);
+  box-shadow:inset 0 1px 0 white,0 13px 38px rgba(35,71,42,.06);
+}
+.public .service:hover {
+  box-shadow:var(--glass-shadow-hover),inset 0 1px 0 white;
+}
+.public .service i {
+  border-radius:14px;
+  background:linear-gradient(140deg,#fff,#e6f3df);
+  border:1px solid #fff;
+  box-shadow:0 6px 16px rgba(69,114,57,.10);
+}
+.public .section h2 { color:#1b3022; }
+.public .sectionHead p, .public .service p { color:#596e5d; }
+.public .benefits {
+  background:linear-gradient(110deg,rgba(26,50,31,.98),rgba(34,64,41,.96));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),0 8px 24px rgba(32,62,39,.1);
+}
+.public .process {
+  background:linear-gradient(145deg,#1d3a27,#14271c 72%);
+  box-shadow:0 16px 46px rgba(19,44,26,.16),inset 0 1px 0 rgba(255,255,255,.14);
+}
+.public .contact {
+  background:linear-gradient(130deg,rgba(87,145,59,.98),rgba(145,195,93,.97));
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 18px 48px rgba(64,118,48,.20),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.public footer {
+  background:rgba(255,255,255,.81);
+  border-top:1px solid rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+.public footer :is(.ordinis-footer-credit,.developer-credit>a) {
+  background:rgba(255,255,255,.79);
+  box-shadow:inset 0 1px 0 white,0 5px 14px rgba(39,71,47,.07);
+  border:1px solid rgba(208,225,210,.75);
+}
+
+/* Workshop: a tactile dark-glass sidebar and floating luminous toolbar */
+.admin {
+  color:#203426;
+  background:
+    radial-gradient(ellipse 56% 35% at 78% 4%,rgba(193,220,171,.48),transparent 76%),
+    radial-gradient(ellipse 50% 44% at 100% 85%,rgba(194,228,213,.38),transparent 70%),
+    linear-gradient(160deg,#f6faf5,#eaf3e9 86%);
+}
+.admin aside {
+  background:linear-gradient(155deg,rgba(19,39,26,.98),rgba(29,62,38,.97) 64%,rgba(18,39,27,.98));
+  border-right:1px solid rgba(255,255,255,.18);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.07),6px 0 33px rgba(15,37,23,.09);
+}
+.admin .brandBox img {
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,247,234,.88));
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 1px 0 white,0 10px 25px rgba(4,22,7,.14);
+  border-radius:14px;
+}
+.admin aside nav button {
+  border:1px solid transparent;
+  border-radius:14px;
+}
+.admin aside nav button:hover,
+.admin aside nav button.active {
+  background:linear-gradient(110deg,rgba(255,255,255,.17),rgba(255,255,255,.065));
+  border-color:rgba(255,255,255,.13);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 4px 16px rgba(0,0,0,.07);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+.admin aside nav button.active {
+  color:#fff;
+  box-shadow:inset 3px 0 0 #a2d36b,inset 0 1px 0 rgba(255,255,255,.15);
+}
+.admin .profile>b, .admin .avatar {
+  border:1px solid rgba(255,255,255,.56);
+  box-shadow:0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 #fff;
+}
+.admin .workspace>header {
+  position:sticky;top:0;z-index:12;
+  background:linear-gradient(112deg,rgba(255,255,255,.85),rgba(248,253,244,.7));
+  border-bottom:1px solid rgba(255,255,255,.97);
+  box-shadow:0 8px 24px rgba(42,78,47,.065),inset 0 1px 0 white;
+  -webkit-backdrop-filter:blur(25px) saturate(160%);
+  backdrop-filter:blur(25px) saturate(160%);
+}
+.admin .workspace>header h1 { color:#18311e; }
+.admin .workspace .content { color:#2c402e; }
+
+/* KPI cards have subtle glass sheen; data-rich tables remain opaque */
+.admin :is(.metric,.panel,.machine,.stationCard) {
+  background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(252,255,249,.9));
+  border:1px solid rgba(218,233,213,.8);
+  border-top-color:#fff;
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 white,0 12px 28px rgba(46,81,48,.055);
+  transition:transform .22s cubic-bezier(.2,.75,.3,1),box-shadow .22s ease;
+}
+.admin :is(.metric,.panel,.machine,.stationCard):hover {
+  box-shadow:var(--glass-shadow-hover),inset 0 1px 0 #fff;
+}
+.admin .metric>i {
+  background:linear-gradient(140deg,#f9fff5,#e4f1dc);
+  border:1px solid #fff;
+  border-radius:13px;
+  box-shadow:0 5px 14px rgba(71,109,55,.09);
+}
+.admin .table, .admin .invTableOuter {
+  background:rgba(255,255,255,.95);
+  border:1px solid rgba(213,228,214,.9);
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 white,0 11px 30px rgba(45,76,52,.05);
+}
+.admin .toolbar input,
+.admin :is(.modal input,.modal select,.modal textarea,.jobhead select),
+.invHub .invSearch input {
+  background:rgba(255,255,255,.95);
+  border:1px solid #d4e2d2;
+  color:#1e3623;
+  border-radius:13px;
+  box-shadow:inset 0 1px 3px rgba(21,48,26,.045);
+}
+.admin :is(.toolbar button,.jobhead button,.formactions button) {
+  border-radius:999px;
+}
+.admin .radioConsole {
+  background:linear-gradient(130deg,rgba(20,43,29,.98),rgba(32,72,42,.96));
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:23px;
+  box-shadow:0 15px 40px rgba(19,43,26,.22),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.admin .radioLive {
+  border:1px solid rgba(255,255,255,.76);
+  box-shadow:0 5px 14px rgba(46,97,47,.07);
+}
+.admin .miniRadio {
+  background:linear-gradient(125deg,rgba(20,43,28,.91),rgba(26,55,36,.83));
+  border:1px solid rgba(255,255,255,.24);
+  border-top-color:rgba(255,255,255,.41);
+  border-radius:22px;
+  box-shadow:0 26px 70px rgba(8,28,14,.32),inset 0 1px 0 rgba(255,255,255,.19);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  backdrop-filter:blur(24px) saturate(160%);
+}
+.admin .miniPlay {
+  box-shadow:0 5px 16px rgba(145,204,84,.20),inset 0 1px 0 rgba(255,255,255,.42);
+}
+
+/* Login / password change / accountant portal, with crisp control text */
+:is(.loginPage,.loginShell,.passwordGate,.accountingPage,.accountingShell) {
+  background-color:transparent;
+}
+:is(.loginCard,.loginBox,.passwordGate>section,.accountingShell>section,.accountingPage .panel,.moduleState>section) {
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:24px;
+  box-shadow:var(--glass-shadow),inset 0 1px 0 white;
+  background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(249,254,245,.85));
+  -webkit-backdrop-filter:blur(19px) saturate(140%);
+  backdrop-filter:blur(19px) saturate(140%);
+}
+:is(.loginCard,.loginBox,.passwordGate>section) :is(input,select) {
+  border:1px solid #cddccc;
+  border-radius:12px;
+  background:rgba(255,255,255,.94);
+  color:#1b3220;
+}
+:is(.loginCard,.loginBox,.passwordGate>section) button {
+  border-radius:13px;
+}
+
+/* Invoice editing panels float; document/PDF itself MUST stay printable white */
+.invOverlay,.invoiceOverlay {
+  -webkit-backdrop-filter:blur(14px) saturate(95%);
+  backdrop-filter:blur(14px) saturate(95%);
+  background:rgba(17,35,22,.54);
+}
+.invModal,.invoiceEditor {
+  background:linear-gradient(147deg,rgba(255,255,255,.96),rgba(245,253,244,.92));
+  border:1px solid rgba(255,255,255,.96);
+  border-radius:24px;
+  box-shadow:0 34px 94px rgba(10,33,14,.3),inset 0 1px 0 white;
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+}
+.invPaper {
+  background:#fff;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  box-shadow:0 10px 30px rgba(23,45,27,.065);
+}
+.newInvoiceIntro {
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:18px;
+  background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(244,252,239,.85));
+  box-shadow:inset 0 1px 0 white,0 11px 32px rgba(39,76,44,.08);
+}
+.invSoft,.invoiceAddLine {
+  border-radius:999px;
+  background:linear-gradient(140deg,rgba(255,255,255,.92),rgba(236,247,227,.88));
+  border:1px solid rgba(210,227,201,.96);
+  box-shadow:inset 0 1px 0 #fff,0 5px 12px rgba(57,104,54,.07);
+}
+.invForm input,.invForm select,.invSendBox input,.invoiceFields input,.invoiceFields select,.invoiceLine input,.invoiceLine select {
+  border-radius:12px;
+  background:rgba(255,255,255,.97);
+}
+
+/* Low motion, low transparency and graceful fallbacks */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))) {
+  .public .pubnav,.admin .workspace>header { background:#fbfdf9; }
+  .admin .miniRadio,.admin aside { background:#193321; }
+  .invModal,.invoiceEditor { background:#fff; }
+}
+@media (prefers-reduced-transparency:reduce) {
+  .public .pubnav,.admin .workspace>header { background:#fff; }
+  .admin .miniRadio,.admin aside { background:#152c1c; }
+  .public .heroCard,.invModal,.invoiceEditor { background:#fff; }
+}
+@media (prefers-contrast:more) {
+  .public .pubnav,.admin .workspace>header,.invModal,.invoiceEditor { background:#fff;border-color:#9daf9e; }
+  .public :is(.actions .secondary,.brandInfo div), .admin :is(.metric,.panel,.machine) { background:#fff;border-color:#a4b8a2; }
+  .public .pubnav nav a,.admin .workspace .content { color:#152d1e; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .public :is(.actions .primary,.actions .secondary,.contact>a):hover,
+  .primaryBtn:hover,.invPrimary:hover { transform:none; }
+}
+@media (max-width:900px) {
+  .public .pubnav { height:auto; min-height:82px; }
+  .admin .miniRadio { -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px); }
+}
+@media (max-width:760px) {
+  .public .pubnav { padding-top:9px;padding-bottom:9px; }
+  .public .pubnav nav.public-nav-open {
+    background:rgba(250,255,248,.97);
+    border:1px solid rgba(255,255,255,.94);
+    border-radius:0 0 20px 20px;
+    box-shadow:0 20px 30px rgba(28,62,34,.14);
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+  }
+  .admin .metric,.admin .panel,.admin .machine { border-radius:17px; }
+  .invModal,.invoiceEditor { border-radius:18px; }
+  .public .service { border-radius:18px; }
+}
+
+
+/* Finance portal uses the same visual language, with no extra access to workshop data */
+.accounting {
+  background:
+    radial-gradient(ellipse 48% 38% at 88% 9%,rgba(196,223,177,.46),transparent 77%),
+    linear-gradient(145deg,#f4f8f2,#eaf3eb);
+}
+.accounting>aside {
+  background:linear-gradient(155deg,rgba(19,39,26,.98),rgba(27,60,39,.97));
+  border-right:1px solid rgba(255,255,255,.16);
+  box-shadow:5px 0 32px rgba(15,36,21,.07);
+}
+.accounting>aside>img {
+  background:linear-gradient(140deg,#fff,#ecf6e8);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 7px 22px rgba(12,29,14,.15);
+  border-radius:15px;
+}
+.accounting aside nav button.active {
+  color:#eaffdd;
+  background:linear-gradient(120deg,rgba(135,189,76,.29),rgba(255,255,255,.07));
+  border:1px solid rgba(185,218,151,.25);
+  box-shadow:inset 3px 0 0 #b8e58c,inset 0 1px 0 rgba(255,255,255,.14);
+  border-radius:13px;
+}
+.accounting>main>header {
+  background:linear-gradient(112deg,rgba(255,255,255,.86),rgba(247,255,245,.72));
+  border-bottom:1px solid rgba(255,255,255,.95);
+  box-shadow:0 8px 28px rgba(39,77,46,.065),inset 0 1px 0 white;
+  -webkit-backdrop-filter:blur(25px) saturate(160%);
+  backdrop-filter:blur(25px) saturate(160%);
+}
+.accounting .accountMetrics .metric {
+  background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(247,253,243,.92));
+  border:1px solid rgba(225,237,219,.94);
+  border-top-color:#fff;
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 white,0 13px 30px rgba(43,73,47,.055);
+}
+.accounting .accountNote {
+  background:linear-gradient(140deg,rgba(239,250,232,.94),rgba(255,255,255,.79));
+  border:1px solid rgba(255,255,255,.93);
+  border-radius:16px;
+  box-shadow:inset 0 1px 0 white,0 7px 23px rgba(47,89,44,.065);
+}
+.loginShell {
+  background:
+    radial-gradient(ellipse 45% 35% at 100% 10%,rgba(183,218,156,.44),transparent 85%),
+    linear-gradient(130deg,#eff7e9,#f9fcf7);
+}
+.loginIntro {
+  background:
+    radial-gradient(ellipse 70% 55% at -20% 6%,rgba(139,198,88,.26),transparent 75%),
+    linear-gradient(150deg,#172d1d,#264531 85%);
+}
+.moduleCards>div {
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.24);
+  border-top-color:rgba(255,255,255,.39);
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 7px 22px rgba(4,24,8,.13);
+  -webkit-backdrop-filter:blur(15px);
+  backdrop-filter:blur(15px);
+}
+.loginPane {
+  background:transparent;
+}
+.loginCard {
+  border:1px solid rgba(255,255,255,.97);
+  box-shadow:0 30px 74px rgba(24,59,29,.14),inset 0 1px 0 white;
+}
+.loginCard p,.loginCard label { color:#4c5c4d; }
+@media(max-width:620px){
+  .accounting>main>header { -webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px); }
+  .loginShell { background:#f4f9f1; }
+  .loginIntro { padding-bottom:50px; }
+}
