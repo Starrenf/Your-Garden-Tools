@@ -192,3 +192,27 @@ export async function updateJobStatus(jobId, status) {
   if (error) throw error;
   return data;
 }
+
+export async function createInvoice(form){
+ if(!supabase)throw new Error('Supabase is niet beschikbaar.');
+ if(!Array.isArray(form.lines)||!form.lines.length)throw new Error('Voeg minstens één factuurregel toe.');
+ if(!form.number?.trim()||!form.customer?.trim())throw new Error('Klant en factuurnummer zijn verplicht.');
+ if(form.lines.some(x=>!x.description?.trim()||!Number.isFinite(Number(x.quantity))||Number(x.quantity)<=0||Number(x.unit_price)<0))throw new Error('Controleer de factuurregels.');
+ const {data:{user},error:authError}=await supabase.auth.getUser();
+ if(authError||!user)throw new Error('Log opnieuw in om de conceptfactuur op te slaan.');
+ const {data,error}=await supabase.from('invoices').insert({
+  invoice_number:form.number.trim(),customer_id:form.customerId||null,customer_name:form.customer.trim(),
+  invoice_date:form.date,due_date:form.due,status:'Concept',
+  subtotal:form.subtotal,vat_total:form.vatTotal,total:form.total,
+  accounting_status:'Nog niet verwerkt',created_by:user.id
+ }).select('id').single();
+ if(error)throw error;
+ const lines=form.lines.map((x,i)=>({invoice_id:data.id,line_type:'other',description:x.description.trim(),quantity:Number(x.quantity),unit_price:Number(x.unit_price),vat_rate:Number(x.vat_rate),line_total:Math.round((Number(x.quantity)*Number(x.unit_price)+Number.EPSILON)*100)/100,sort_order:i}));
+ const result=await supabase.from('invoice_lines').insert(lines);
+ if(result.error){
+  const rollback=await supabase.from('invoices').delete().eq('id',data.id);
+  if(rollback.error)throw new Error('Factuurregels konden niet worden opgeslagen. Het factuurconcept is wel aangemaakt. Meld dit bij de beheerder.');
+  throw new Error('Factuurregels konden niet worden opgeslagen: '+result.error.message);
+ }
+ return data;
+}
