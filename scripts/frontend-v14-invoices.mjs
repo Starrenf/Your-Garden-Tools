@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+let main=readFileSync('src/main.jsx','utf8');
+const from=main.indexOf('function Invoices(');
+const until=main.indexOf('function Radio(',from);
+if(from<0||until<0)throw new Error('Invoice component anchors ontbreken');
+main=main.slice(0,from)+main.slice(until);
+main="import Invoices from './invoice-ui.jsx';\n"+main;
+const old="page==='invoices'&&<Invoices data={data}/>";
+if(!main.includes(old))throw new Error('Werkplaatsfactuur anchor ontbreekt');
+main=main.replace(old,"page==='invoices'&&<Invoices data={data} setData={setData}/>");
+writeFileSync('src/main.jsx',main,'utf8');
+console.log('v14: Factuurbeheer, PDF en e-mailmodule aangesloten op werkplaats en boekhouding');
