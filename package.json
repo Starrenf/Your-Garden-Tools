@@ -1,19 +1,20 @@
 {
   "name": "your-garden-tools",
   "private": true,
-  "version": "0.6.1",
+  "version": "0.7.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs",
+    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-invoices.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs",
+    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-invoices.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.118.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "pdf-lib": "1.17.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.4",
