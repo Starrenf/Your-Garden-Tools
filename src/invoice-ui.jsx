@@ -158,7 +158,7 @@ function InvoicePreview({invoice,readOnly,onClose,onUpdated}) {
     </div>
   </div>;
 }
-export default function Invoices({data,setData}) {
+export default function Invoices({data,setData,showCreateButton=true}) {
   const [query,setQuery]=useState(''),[composer,setComposer]=useState(false),[selected,setSelected]=useState(null);
   const readOnly=typeof setData!=='function';
   const rows=useMemo(()=>data.invoices.filter(i=>(i.number+' '+i.customer+' '+i.status).toLowerCase().includes(query.toLowerCase())),[data.invoices,query]);
@@ -168,7 +168,7 @@ export default function Invoices({data,setData}) {
   };
   return <section className="invHub">
     <div className="invHubTop"><div><h2>Facturen</h2><p>Bekijk facturen, download PDF-bestanden en verstuur na controle.</p></div>
-    {!readOnly&&<button type="button" className="invPrimary" onClick={()=>setComposer(true)}>+ Nieuwe factuur</button>}</div>
+    {!readOnly&&showCreateButton&&<button type="button" className="invPrimary" onClick={()=>setComposer(true)}>+ Nieuwe factuur</button>}</div>
     <label className="invSearch"><span>Zoeken</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Zoek op factuurnummer, klant of status…"/></label>
     <div className="invTableOuter"><table className="invTable"><thead><tr><th>Factuurnummer</th><th>Klant</th><th>Datum</th><th>Bedrag</th><th>Status</th><th>Actie</th></tr></thead><tbody>
       {rows.map(i=><tr key={i.id}><td><b>{i.number}</b></td><td>{i.customer}</td><td>{displayDate(i.date)}</td><td><b>{eur(i.amount)}</b></td><td><span className={'invStatus '+(i.status==='Concept'?'draft':'')}>{i.status}</span></td><td><button type="button" className="invOpen" onClick={()=>setSelected(i)}>Bekijken ›</button></td></tr>)}
