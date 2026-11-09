@@ -1,0 +1,83 @@
+/* Intuïtieve klantkaarten · Your Garden Tools werkplaats */
+.ccPage { width:100%; min-width:0; color:#22392a; }
+.ccTopbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:0 0 22px;flex-wrap:wrap}
+.ccTopbar h2{font-size:27px;letter-spacing:-.035em;margin:5px 0 6px;color:#193b24}
+.ccTopbar p{font-size:13px;color:#697b6e;max-width:620px;line-height:1.6;margin:0}
+.ccKicker{font-size:10px;font-weight:850;letter-spacing:.18em;color:#659643}
+.ccPrimary,.ccSecondary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;border-radius:999px;padding:11px 19px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s,background .2s}
+.ccPrimary{background:linear-gradient(135deg,#a6d275,#79b544);color:#183721;border:1px solid #aee28a;box-shadow:inset 0 1px 0 #ffffffa3,0 8px 23px rgba(65,113,46,.16)}
+.ccPrimary:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 #ffffffcf,0 11px 24px rgba(65,113,46,.23)}
+.ccSecondary{background:#fff;border:1px solid #d4e5d2;color:#3b623f}
+.ccSecondary:hover{background:#eff7eb}
+.ccPrimary:disabled,.ccSecondary:disabled{opacity:.58;cursor:not-allowed}
+.ccFilters{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.ccFilters label{position:relative;display:block;min-width:0;width:min(520px,100%)}
+.ccFilters input{display:block;width:100%;height:48px;border-radius:15px;border:1px solid rgba(205,225,204,.96);background:rgba(255,255,255,.93);padding:0 16px 0 45px;font-size:13px;color:#27432c;box-shadow:inset 0 1px 0 #fff,0 7px 18px rgba(52,92,59,.045)}
+.ccFilters input:focus{outline:3px solid #a9cc91;outline-offset:1px}
+.ccSearchIcon{position:absolute;left:16px;top:11px;font-size:23px;color:#608b54;line-height:1}
+.ccFilters>span{font-size:12px;color:#718274;font-weight:700;white-space:nowrap}
+.ccGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:18px}
+.ccCard{position:relative;min-width:0;border-radius:21px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(247,252,244,.92));border:1px solid rgba(217,235,209,.92);border-top-color:#fff;box-shadow:inset 0 1px 0 white,0 12px 34px rgba(41,80,45,.07);overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.ccCard:hover{transform:translateY(-3px);border-color:#b2d1ab;box-shadow:0 21px 43px rgba(41,82,47,.13),inset 0 1px 0 #fff}
+.ccCardButton{appearance:none;display:flex;flex-direction:column;align-items:stretch;gap:18px;text-align:left;width:100%;height:100%;border:0;padding:22px;background:transparent;cursor:pointer;color:inherit}
+.ccCardButton:focus-visible{outline:3px solid #668f4e;outline-offset:-4px;border-radius:20px}
+.ccCardHeader{display:flex;align-items:center;gap:13px;min-width:0}
+.ccAvatar{display:grid;place-items:center;width:51px;height:51px;flex:0 0 51px;border-radius:16px;background:linear-gradient(145deg,#e0f1d7,#c4e1b2);color:#396a3b;font-size:18px;font-weight:850;border:1px solid #fff;box-shadow:inset 0 1px 0 #fff,0 6px 14px #415f3d1c}
+.ccCardIdentity{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.ccCardIdentity strong{font-size:15px;line-height:1.25;overflow-wrap:anywhere;color:#193c23}
+.ccCardIdentity small{font-size:11px;color:#728372;line-height:1.4;overflow-wrap:anywhere}
+.ccArrow{font-size:17px;color:#74aa52;align-self:flex-start}
+.ccCardInfo{display:flex;flex-direction:column;gap:11px;min-height:78px;justify-content:center}
+.ccCardInfo>span{display:flex;gap:10px;align-items:baseline;font-size:12px;color:#506654;min-width:0;overflow-wrap:anywhere}
+.ccCardInfo b{display:inline-block;min-width:19px;color:#7aa459;font-weight:850}
+.ccCardFoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:16px;border-top:1px solid #e4eee0}
+.ccCardFoot>span{font-size:10px;color:#557154;border:1px solid #deebd9;background:#f2f9ed;border-radius:999px;padding:6px 9px;font-weight:750}
+.ccCardFoot>strong{margin-left:auto;font-size:11px;color:#477b37;white-space:nowrap}
+.ccCardFoot>strong span{font-size:15px}
+.ccNoResults{padding:55px 25px;text-align:center;border-radius:20px;background:#ffffffd9;border:1px dashed #c8ddc4;margin-top:10px}
+.ccNoResults h3{margin:0 0 8px}.ccNoResults p{color:#728274;font-size:13px;line-height:1.6}
+.ccBackdrop{position:fixed;inset:0;z-index:2000;background:rgba(15,35,22,.60);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:flex;justify-content:center;align-items:center;padding:18px;overflow:auto}
+.ccDrawer{display:flex;flex-direction:column;width:min(840px,100%);max-height:min(94vh,920px);max-height:min(94dvh,920px);border-radius:25px;background:linear-gradient(155deg,rgba(255,255,255,.985),rgba(246,252,244,.96));border:1px solid #fff;box-shadow:0 32px 96px rgba(8,29,11,.34),inset 0 1px 0 #fff;overflow:hidden;color:#243d2c}
+.ccDrawerHead{padding:25px 28px 22px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;border-bottom:1px solid #e1ecdc}
+.ccDrawerIdentity{display:flex;align-items:center;gap:17px;min-width:0}
+.ccAvatarLarge{width:64px;height:64px;flex-basis:64px;font-size:21px;border-radius:19px}
+.ccDrawerHead h2{font-size:25px;letter-spacing:-.04em;margin:3px 0 4px;overflow-wrap:anywhere}
+.ccDrawerHead small{font-size:9px;letter-spacing:.14em;color:#669347;font-weight:850}
+.ccDrawerHead p{color:#6a7b6d;font-size:12px;margin:0;line-height:1.5}
+.ccClose{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;background:#f4f8f0;border:1px solid #dce9d7;color:#416344;border-radius:12px;font-size:25px;cursor:pointer}
+.ccTabs{display:flex;gap:6px;padding:10px 24px;border-bottom:1px solid #e2ece0;overflow:auto;background:rgba(245,250,242,.55)}
+.ccTabs button{border:1px solid transparent;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:800;color:#68806b;background:transparent;white-space:nowrap;cursor:pointer}
+.ccTabs button.selected{border-color:#c6e0b5;color:#366b34;background:#e7f3dd;box-shadow:inset 0 1px 0 white}
+.ccDrawerBody{padding:24px 28px 28px;overflow:auto;min-height:0}
+.ccSectionHead{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
+.ccSectionHead h3{margin:0 0 5px;font-size:18px;color:#1c3b26}
+.ccSectionHead p{margin:0;font-size:12px;color:#718575;line-height:1.5}
+.ccDetailsGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ccDetailsGrid>div{min-width:0;display:flex;flex-direction:column;gap:7px;padding:16px;border:1px solid #e2eedd;border-radius:15px;background:#fff;box-shadow:0 4px 15px #1c542107}
+.ccDetailsGrid small{font-size:10px;letter-spacing:.05em;color:#829287;text-transform:uppercase}
+.ccDetailsGrid strong{font-size:13px;line-height:1.5;color:#284631;overflow-wrap:anywhere}
+.ccDetailsGrid a{color:#407a38;text-decoration:underline;text-underline-offset:3px}
+.ccNotes{margin-top:18px;padding:18px;border-radius:15px;border:1px solid #e2ecde;background:#f5f9f2}
+.ccNotes h3{margin:0 0 9px;font-size:14px}
+.ccNotes p{color:#617364;font-size:13px;line-height:1.65;white-space:pre-wrap;margin:0}
+.ccDrawerActions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:24px}
+.ccLinkedList{display:flex;flex-direction:column;gap:11px}
+.ccLinked{display:flex;gap:14px;align-items:center;padding:17px;border-radius:15px;border:1px solid #e3ecdd;background:#fff}
+.ccLinkedIcon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#e8f4df;color:#588749;display:grid;place-items:center;font-size:23px}
+.ccLinked>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ccLinked strong{font-size:13px;line-height:1.45;color:#28442e;overflow-wrap:anywhere}
+.ccLinked small{font-size:11px;color:#7c8a7d}
+.ccEmpty{font-size:13px;line-height:1.65;color:#617962;padding:32px;border-radius:16px;background:#f4f9f0;border:1px dashed #cbdec2}
+.ccForm{display:flex;flex-direction:column}
+.ccHelp{font-size:12px;color:#738673;margin:0 0 19px;line-height:1.5}
+.ccFieldGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ccFieldGrid label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:750;color:#526a55;min-width:0}
+.ccFieldGrid label>span{color:#b04d40;display:inline}
+.ccFieldGrid .ccWide{grid-column:1/-1}
+.ccFieldGrid input,.ccFieldGrid textarea{width:100%;min-width:0;padding:12px 13px;border-radius:12px;font-size:13px;color:#263c2a;background:#fff;border:1px solid #d1e1cf;box-shadow:inset 0 1px 3px #1f3f2009;resize:vertical}
+.ccFieldGrid input{min-height:44px}
+.ccFieldGrid :is(input,textarea):focus{outline:3px solid #b4d69b;outline-offset:0}
+.ccError{border-radius:12px;padding:12px 14px;background:#fff0ef;border:1px solid #f2c8c1;color:#a03c34;font-size:12px;line-height:1.5}
+@media(max-width:900px){.ccGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:670px){.ccGrid{grid-template-columns:1fr}.ccCardButton{padding:19px}.ccTopbar{align-items:flex-start;flex-direction:column}.ccTopbar>.ccPrimary{width:100%}.ccFilters{flex-direction:column;align-items:stretch}.ccFilters label{width:100%;max-width:none}.ccFilters>span{align-self:flex-end}.ccBackdrop{padding:5px}.ccDrawer{max-height:calc(100dvh - 10px);border-radius:18px}.ccDrawerHead{padding:19px 16px 16px}.ccDrawerBody{padding:19px 16px}.ccTabs{padding:9px 10px}.ccDrawerHead h2{font-size:21px}.ccAvatarLarge{width:48px;height:48px;flex-basis:48px;font-size:17px}.ccDetailsGrid{grid-template-columns:1fr}.ccFieldGrid{grid-template-columns:1fr}.ccFieldGrid .ccWide{grid-column:1}.ccSectionHead{align-items:flex-start;flex-direction:column}.ccSectionHead .ccPrimary{width:100%}.ccDrawerActions{flex-direction:column-reverse}.ccDrawerActions button{width:100%}}
+@media(prefers-reduced-motion:reduce){.ccCard,.ccPrimary,.ccSecondary{transition:none!important}.ccCard:hover,.ccPrimary:hover{transform:none!important}}
