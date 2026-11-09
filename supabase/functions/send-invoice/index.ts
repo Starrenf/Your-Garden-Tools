@@ -34,7 +34,7 @@ Deno.serve(async(req:Request)=>{
  }
  let body:{invoiceId?:string};
  try{body=await req.json();}catch(_){return respond(400,{error:'Ongeldige aanvraag.'});}
- if(!body.invoiceId||!/^([0-9a-f]{8}-){4}[0-9a-f]{12}$/i.test(body.invoiceId)){
+ if(!body.invoiceId||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(body.invoiceId)){
    return respond(400,{error:'Ongeldig factuur-ID.'});
  }
  const {data:invoice,error:invoiceError}=await supabase.from('invoices').select('*')
