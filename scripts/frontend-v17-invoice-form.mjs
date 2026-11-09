@@ -1,0 +1,11 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const path='src/main.jsx';
+let main=readFileSync(path,'utf8');
+const importLine="import InvoiceEntry from './invoice-form.jsx';";
+if(!main.includes(importLine))main=importLine+'\n'+main;
+const old="page==='invoices'&&<Invoices data={data}/>";
+const replacement="page==='invoices'&&<><InvoiceEntry customers={data.customers} onSaved={async()=>setData(await loadAppData('owner'))}/><Invoices data={data}/></>";
+if(main.includes(old))main=main.replace(old,replacement);
+else if(!main.includes('<InvoiceEntry customers={data.customers}'))throw new Error('Cannot locate protected invoice module');
+writeFileSync(path,main,'utf8');
+console.log('Invoice form activated for signed-in workshop users.');
