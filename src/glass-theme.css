@@ -403,3 +403,81 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .invModal,.invoiceEditor { border-radius:18px; }
   .public .service { border-radius:18px; }
 }
+
+
+/* Finance portal uses the same visual language, with no extra access to workshop data */
+.accounting {
+  background:
+    radial-gradient(ellipse 48% 38% at 88% 9%,rgba(196,223,177,.46),transparent 77%),
+    linear-gradient(145deg,#f4f8f2,#eaf3eb);
+}
+.accounting>aside {
+  background:linear-gradient(155deg,rgba(19,39,26,.98),rgba(27,60,39,.97));
+  border-right:1px solid rgba(255,255,255,.16);
+  box-shadow:5px 0 32px rgba(15,36,21,.07);
+}
+.accounting>aside>img {
+  background:linear-gradient(140deg,#fff,#ecf6e8);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 7px 22px rgba(12,29,14,.15);
+  border-radius:15px;
+}
+.accounting aside nav button.active {
+  color:#eaffdd;
+  background:linear-gradient(120deg,rgba(135,189,76,.29),rgba(255,255,255,.07));
+  border:1px solid rgba(185,218,151,.25);
+  box-shadow:inset 3px 0 0 #b8e58c,inset 0 1px 0 rgba(255,255,255,.14);
+  border-radius:13px;
+}
+.accounting>main>header {
+  background:linear-gradient(112deg,rgba(255,255,255,.86),rgba(247,255,245,.72));
+  border-bottom:1px solid rgba(255,255,255,.95);
+  box-shadow:0 8px 28px rgba(39,77,46,.065),inset 0 1px 0 white;
+  -webkit-backdrop-filter:blur(25px) saturate(160%);
+  backdrop-filter:blur(25px) saturate(160%);
+}
+.accounting .accountMetrics .metric {
+  background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(247,253,243,.92));
+  border:1px solid rgba(225,237,219,.94);
+  border-top-color:#fff;
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 white,0 13px 30px rgba(43,73,47,.055);
+}
+.accounting .accountNote {
+  background:linear-gradient(140deg,rgba(239,250,232,.94),rgba(255,255,255,.79));
+  border:1px solid rgba(255,255,255,.93);
+  border-radius:16px;
+  box-shadow:inset 0 1px 0 white,0 7px 23px rgba(47,89,44,.065);
+}
+.loginShell {
+  background:
+    radial-gradient(ellipse 45% 35% at 100% 10%,rgba(183,218,156,.44),transparent 85%),
+    linear-gradient(130deg,#eff7e9,#f9fcf7);
+}
+.loginIntro {
+  background:
+    radial-gradient(ellipse 70% 55% at -20% 6%,rgba(139,198,88,.26),transparent 75%),
+    linear-gradient(150deg,#172d1d,#264531 85%);
+}
+.moduleCards>div {
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.24);
+  border-top-color:rgba(255,255,255,.39);
+  border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 7px 22px rgba(4,24,8,.13);
+  -webkit-backdrop-filter:blur(15px);
+  backdrop-filter:blur(15px);
+}
+.loginPane {
+  background:transparent;
+}
+.loginCard {
+  border:1px solid rgba(255,255,255,.97);
+  box-shadow:0 30px 74px rgba(24,59,29,.14),inset 0 1px 0 white;
+}
+.loginCard p,.loginCard label { color:#4c5c4d; }
+@media(max-width:620px){
+  .accounting>main>header { -webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px); }
+  .loginShell { background:#f4f9f1; }
+  .loginIntro { padding-bottom:50px; }
+}
