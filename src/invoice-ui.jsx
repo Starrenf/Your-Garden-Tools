@@ -113,6 +113,7 @@ function InvoicePreview({invoice,readOnly,onClose,onUpdated}) {
   });
   const send=()=>action('send',async()=>{
     if(invoice.status==='Concept'||!invoice.pdfPath)throw new Error('Maak de factuur eerst definitief.');
+    if(companyMissing.length)throw new Error('Vul eerst het KvK-nummer, btw-nummer en IBAN van Your Garden Tools in voordat je een factuur naar een klant verstuurt.');
     if(!sendingTo||sendingTo.toLowerCase()!==String(invoice.customerEmail||'').toLowerCase())throw new Error('E-mailadres wijkt af van de opgeslagen factuur. Controleer het klantadres.');
     if(!window.confirm('Factuur '+invoice.number+' naar '+sendingTo+' versturen?'))return;
     const result=await sendFinalInvoice(invoice.id);
