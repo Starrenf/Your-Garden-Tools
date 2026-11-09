@@ -15,6 +15,24 @@ if(jsx.includes(fourth))jsx=jsx.replace(fourth,'<div><b>04</b>Ophaalservice aan 
 const contact='<div className="contactInfo"><span><small>Werkplaats</small>';
 if(jsx.includes(contact))jsx=jsx.replace(contact,'<p className="serviceHomeNote">Service aan huis: op afspraak kunnen wij uw tuinmachine bij u thuis ophalen. Bel voor de mogelijkheden en tarieven.</p>'+contact);
 if(!css.includes('.serviceHomeNote{'))css+='\n.public-view.page-diensten .cards{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.serviceHomeNote{margin:22px 0;padding:18px 22px;background:#f0f7eb;border-radius:13px;color:#344f30;line-height:1.65;font-size:15px}\n';
+
+const oldTitle='<h2>Van brengen tot<br/><em>weer aan de slag.</em></h2>';
+const newTitle='<h2>Van ophalen tot<br/><em>weer aan de slag.</em></h2>';
+if(!jsx.includes(oldTitle))throw new Error('Werkwijze-titel niet gevonden');
+jsx=jsx.replace(oldTitle,newTitle);
+const oldSteps='<Step n="01" t="Machine brengen"/><Step n="02" t="Controle & advies"/><Step n="03" t="Onderhoud of reparatie"/><Step n="04" t="Klaar voor gebruik"/>';
+const newSteps='<Step n="01" t="Afspraak & ophalen"/><Step n="02" t="Controle & advies"/><Step n="03" t="Onderhoud of reparatie"/><Step n="04" t="Terugbezorgd & klaar"/>';
+if(!jsx.includes(oldSteps))throw new Error('Werkwijze-stappen niet gevonden');
+jsx=jsx.replace(oldSteps,newSteps);
+const oldStepText='<p>We houden u op de hoogte en leggen afspraken duidelijk vast.</p>';
+const newStepText='<p>{n==="01"?"Ludo haalt uw machine op afspraak bij u thuis op.":n==="02"?"We bekijken wat nodig is en stemmen eventuele werkzaamheden met u af.":n==="03"?"Uw machine wordt vakkundig onderhouden of gerepareerd.":"Na afronding maken we een afspraak om de machine weer bij u thuis terug te bezorgen."}</p>';
+if(!jsx.includes(oldStepText))throw new Error('Omschrijving werkwijze-stappen niet gevonden');
+jsx=jsx.replace(oldStepText,newStepText);
+const oldIntro='Geen ingewikkeld proces. Gewoon duidelijke afspraken en weten waar u aan toe bent.';
+const newIntro='U hoeft de machine niet zelf te brengen. Ludo haalt deze op afspraak bij u thuis op, voert het werk uit en brengt de machine daarna weer terug. Duidelijke afspraken, zonder gedoe.';
+if(!jsx.includes(oldIntro))throw new Error('Intro werkwijze niet gevonden');
+jsx=jsx.replace(oldIntro,newIntro);
+
 writeFileSync(p,jsx,'utf8');
 writeFileSync('src/styles.css',css,'utf8');
 console.log('Service aan huis and collection by appointment added to public site.');
