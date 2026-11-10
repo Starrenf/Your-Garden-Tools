@@ -15,7 +15,7 @@ const hero=`<div className="heroCard toroHeroCard">
       <img className="toroHeroImage" src="/toro-homepage.webp" width="720" height="813" decoding="async" fetchPriority="high" alt="Rode Toro 60V grasmaaier in een verzorgde, bloemrijke tuin"/>
       <span className="toroHeroTag">TUIN- & PARKMACHINES</span>
     </div>
-    <figcaption className="toroHeroCaption"><div><small>VAN OPPHALEN TOT TERUGBEZORGEN</small><strong>Uw tuinmachine in goede handen.</strong></div><span className="toroHeroCheck" aria-hidden="true">✓</span></figcaption>
+    <figcaption className="toroHeroCaption"><div><small>VAN OPHALEN TOT TERUGBEZORGEN</small><strong>Uw tuinmachine in goede handen.</strong></div><span className="toroHeroCheck" aria-hidden="true">✓</span></figcaption>
   </figure>
   <div className="toroHeroContact">
     <div><small>Werkplaats</small><strong>Ingenopestraat 6 · 6241 BZ Bunde</strong></div>
