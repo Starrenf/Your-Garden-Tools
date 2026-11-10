@@ -1,0 +1,174 @@
+/* Your Garden Tools · echte Toro-foto als hoofdvisual
+   Bestaand bedrijfslogo blijft eigen merkdrager in navigatie, hero en documenten. */
+.public .heroCard.toroHeroCard {
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  gap:12px;
+  padding:13px;
+  overflow:hidden;
+  width:100%;
+  max-width:650px;
+  margin:0;
+  transform:none;
+  border:1px solid rgba(255,255,255,.93);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(238,248,233,.67));
+  -webkit-backdrop-filter:blur(24px) saturate(140%);
+  backdrop-filter:blur(24px) saturate(140%);
+  box-shadow:0 28px 65px rgba(31,72,42,.16),inset 0 1px 0 #fff;
+}
+.public .toroHeroFigure {
+  display:block;
+  position:relative;
+  margin:0;
+  padding:0;
+  width:100%;
+  overflow:hidden;
+  border-radius:20px;
+  background:#dcebd4;
+  border:1px solid rgba(255,255,255,.78);
+}
+.public .toroHeroImageWrap {
+  width:100%;
+  aspect-ratio:720 / 813;
+  position:relative;
+  overflow:hidden;
+  max-height:590px;
+  background:linear-gradient(130deg,#d6eac5,#f0f5e8);
+}
+.public .toroHeroImage {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  transition:transform .6s cubic-bezier(.2,.7,.25,1);
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  .public .toroHeroCard:hover .toroHeroImage {transform:scale(1.022)}
+}
+.public .toroHeroTag {
+  position:absolute;
+  top:18px;
+  left:18px;
+  z-index:2;
+  border-radius:100px;
+  border:1px solid rgba(255,255,255,.84);
+  background:rgba(255,255,255,.91);
+  box-shadow:0 5px 17px rgba(20,53,25,.12);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  padding:9px 12px;
+  font-size:10px;
+  line-height:1;
+  font-weight:850;
+  letter-spacing:.12em;
+  color:#315a30;
+}
+.public .toroHeroCaption {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 18px;
+  color:#f1f8ed;
+  background:linear-gradient(115deg,#1b3e26,#345b34);
+}
+.public .toroHeroCaption div {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  gap:5px;
+}
+.public .toroHeroCaption small {
+  font-size:9px;
+  letter-spacing:.14em;
+  font-weight:800;
+  color:#bad7a8;
+}
+.public .toroHeroCaption strong {
+  font-size:clamp(13px,1.25vw,18px);
+  line-height:1.3;
+  font-weight:800;
+  color:#fff;
+}
+.public .toroHeroCheck {
+  display:grid;
+  flex:0 0 33px;
+  place-items:center;
+  width:33px;
+  height:33px;
+  border:1px solid rgba(255,255,255,.45);
+  background:rgba(255,255,255,.14);
+  border-radius:100px;
+  font-size:18px;
+  color:#d6ffab;
+}
+.public .toroHeroContact {
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:8px;
+}
+.public .toroHeroContact>div {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  border-radius:12px;
+  padding:12px 14px;
+  border:1px solid rgba(220,237,213,.83);
+  background:rgba(255,255,255,.87);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95);
+}
+.public .toroHeroContact>div:first-child {grid-column:1/-1}
+.public .toroHeroContact small {
+  display:block;
+  font-size:10px;
+  color:#718575;
+  font-weight:750;
+  letter-spacing:.035em;
+}
+.public .toroHeroContact :is(strong,a) {
+  display:block;
+  font-size:12px;
+  font-weight:790;
+  line-height:1.4;
+  color:#2c512f;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+.public .toroHeroContact a:hover {text-decoration:underline}
+@media(max-width:1050px) {
+  .public .heroCard.toroHeroCard {
+    margin:0 auto;
+    max-width:min(100%,600px);
+    transform:none;
+  }
+}
+@media(max-width:760px) {
+  .public .heroCard.toroHeroCard {
+    display:flex !important;
+    max-width:540px;
+    padding:9px;
+    gap:9px;
+    margin:12px auto 0;
+    border-radius:19px;
+  }
+  .public .toroHeroFigure {border-radius:14px}
+  .public .toroHeroImageWrap {max-height:none;min-height:0}
+  .public .toroHeroCaption {padding:12px 13px}
+  .public .toroHeroCaption strong {font-size:14px}
+  .public .toroHeroTag {font-size:9px;top:12px;left:12px;padding:8px 10px}
+  .public .toroHeroContact {grid-template-columns:1fr;gap:7px}
+  .public .toroHeroContact>div:first-child {grid-column:auto}
+  .public .toroHeroContact>div {padding:10px 12px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .public .toroHeroImage {transition:none;transform:none !important}
+}
+@media(prefers-reduced-transparency:reduce) {
+  .public .heroCard.toroHeroCard {background:#f9fdf6}
+  .public .toroHeroTag,.public .toroHeroContact>div {background:#fff}
+}
