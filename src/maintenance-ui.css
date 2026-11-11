@@ -1,0 +1,48 @@
+/* Websitebeheer — onderhoudsstand, in de huisstijl van Your Garden Tools */
+.ygMaintenancePublic{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:28px 16px;background:radial-gradient(ellipse 55% 35% at 18% 14%,#b4d89d80,transparent 90%),radial-gradient(ellipse 45% 35% at 96% 85%,#a4d8b580,transparent 90%),#edf5e8;color:#213626;font-family:inherit}
+.ygMaintenanceCard{width:min(750px,100%);padding:clamp(28px,6vw,62px);border:1px solid #ffffffcf;border-radius:28px;background:linear-gradient(147deg,#ffffffef,#f7fdf3df);box-shadow:0 24px 70px #244a2d24,inset 0 1px 0 #fff;text-align:center;backdrop-filter:blur(17px);-webkit-backdrop-filter:blur(17px)}
+.ygMaintenanceLogo{display:block;width:min(350px,86%);height:auto;object-fit:contain;margin:0 auto 20px}
+.ygMaintenanceEyebrow{color:#65934a;letter-spacing:.15em;font-size:11px;font-weight:850}
+.ygMaintenanceSymbol{width:55px;height:55px;display:grid;place-items:center;font-size:27px;border-radius:18px;color:#3d7830;background:#e6f4da;box-shadow:inset 0 1px 0 #fff;margin:28px auto 17px}
+.ygMaintenanceCard h1{font-size:clamp(30px,6.8vw,51px);letter-spacing:-.045em;line-height:1.1;color:#213b2a;margin:10px 0 15px;text-wrap:balance}
+.ygMaintenanceCard>p{max-width:540px;font-size:clamp(15px,2.6vw,17px);line-height:1.75;color:#5b705f;margin:0 auto 28px}
+.ygMaintenanceActions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.ygMaintenanceActions a{display:inline-flex;justify-content:center;align-items:center;min-height:48px;border-radius:100px;padding:13px 24px;font-size:14px;font-weight:850;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.ygMaintenanceActions a:hover{transform:translateY(-2px)}
+.ygMaintenanceCall{background:#80bb4d;color:#193823;box-shadow:inset 0 1px #ffffff80,0 9px 22px #387a3b2b}
+.ygMaintenanceMail{border:1px solid #cfe5c9;color:#375a34;background:#fff}
+.ygMaintenanceFoot{margin-top:36px;border-top:1px solid #d7e7d3;padding-top:18px;display:flex;flex-direction:column;align-items:center;gap:12px;color:#748571;font-size:12px}
+.ygMaintenanceFoot a{color:#687c66;font-size:12px;text-underline-offset:3px}
+.ygMaintenanceLoading{min-height:100vh;background:#f0f7e9;display:grid;place-items:center;font-size:14px;color:#627b58}
+.ygMaintenanceSettings{max-width:950px;margin:0 auto 70px;color:#263d2b}
+.ygMaintenanceSettingsHeader h2{font-size:clamp(26px,3.2vw,34px);letter-spacing:-.035em;margin:9px 0 8px}
+.ygMaintenanceSettingsHeader p{color:#657a69;line-height:1.65;font-size:13px;max-width:700px;margin:0 0 24px}
+.ygMaintenanceStatusCard{background:linear-gradient(145deg,#ffffffef,#f8fdf6e0);border:1px solid #ffffffef;box-shadow:0 14px 44px #23552a12,inset 0 1px #fff;border-radius:22px;padding:25px}
+.ygMaintenanceStatusTop{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.ygMaintenanceStatusInfo{display:flex;align-items:center;gap:16px}
+.ygMaintenanceStatusDot{display:block;flex:0 0 16px;width:16px;height:16px;border-radius:100%;background:#8aba6d;box-shadow:0 0 0 6px #d9eecf}
+.ygMaintenanceStatusDot.on{background:#ee9c4b;box-shadow:0 0 0 6px #fff0d9}
+.ygMaintenanceStatusInfo>div{display:flex;flex-direction:column;gap:6px}
+.ygMaintenanceStatusInfo strong{font-size:19px;color:#233d2b}
+.ygMaintenanceStatusInfo small{font-size:12px;line-height:1.45;color:#77897a}
+.ygMaintenanceSwitch{width:74px;height:40px;border-radius:100px;border:1px solid #cedeca;background:#ccd9c9;padding:4px;cursor:pointer;transition:background .2s;flex:0 0 74px;position:relative}
+.ygMaintenanceSwitch.isOn{background:#80b94b;border-color:#6da63f}
+.ygMaintenanceSwitch:disabled{opacity:.6;cursor:wait}
+.ygMaintenanceSwitchThumb{display:block;width:30px;height:30px;background:#fff;border-radius:100%;box-shadow:0 2px 5px #20432740;transform:translateX(0);transition:transform .2s}
+.ygMaintenanceSwitch.isOn .ygMaintenanceSwitchThumb{transform:translateX(33px)}
+.ygMaintenanceStatusBottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #e2ede0;margin-top:24px;padding-top:16px;font-size:11px;color:#7a8b7b}
+.ygMaintenanceStatusBottom b{color:#4e704e}
+.ygMaintenanceHelp{margin-top:25px;background:#fffffff1;border:1px solid #e0ebdd;border-radius:21px;padding:26px;box-shadow:0 10px 30px #245b2810}
+.ygMaintenanceHelp h3{margin:0 0 16px;font-size:18px}
+.ygMaintenanceHelp>div{display:flex;align-items:baseline;gap:12px;border-top:1px solid #eaf1e7;padding:15px 0}
+.ygMaintenanceHelp>div span{width:22px;flex:0 0 22px;color:#6e9d49;font-weight:900}
+.ygMaintenanceHelp p{font-size:13px;color:#687967;line-height:1.6;margin:0}
+.ygMaintenanceHelp strong{color:#345b34}
+.ygMaintenanceError,.ygMaintenanceSuccess{padding:15px;border-radius:12px;margin-top:15px;font-size:13px;line-height:1.6}
+.ygMaintenanceError{background:#fff0eb;border:1px solid #f0c7b7;color:#9a4634}
+.ygMaintenanceError button{cursor:pointer;margin-left:10px;text-decoration:underline;border:0;background:transparent;color:inherit;font-weight:800}
+.ygMaintenanceSuccess{background:#edf8e8;border:1px solid #c8e5b9;color:#366532}
+.ygMaintenanceSettingsLinks{margin-top:22px;display:flex;gap:16px;flex-wrap:wrap}
+.ygMaintenanceSettingsLinks a{color:#4c7b3e;font-size:13px;font-weight:800;text-underline-offset:4px}
+@media(max-width:600px){.ygMaintenanceCard{border-radius:19px}.ygMaintenanceActions{flex-direction:column}.ygMaintenanceActions a{width:100%}.ygMaintenanceStatusCard,.ygMaintenanceHelp{padding:19px}.ygMaintenanceStatusInfo strong{font-size:16px}.ygMaintenanceSettingsLinks{gap:11px}}
+@media(prefers-reduced-motion:reduce){.ygMaintenanceActions a,.ygMaintenanceSwitch,.ygMaintenanceSwitchThumb{transition:none}.ygMaintenanceActions a:hover{transform:none}}
