@@ -1,34 +1,42 @@
-# Your Garden Tools — Vite + React (Ludo demo)
+# Your Garden Tools — React + Vite
 
-Deze versie is bijgewerkt voor de demo aan **Ludo Neven** en bevat het gekozen logo in de publieke website en de werkplaatsomgeving.
+Actuele broncode voor de publieke website en de beveiligde werkplaatsmodule
+van **Your Garden Tools**.
 
-## Starten
+## Lokaal testen
+
+**Lees eerst [README-LOKAAL.md](README-LOKAAL.md)** voor installatie,
+Supabase-configuratie en belangrijke waarschuwingen over testen met de
+productiedatabase.
+
+Korte start:
+
 ```bash
 npm install
 npm run dev
 ```
-Open daarna de lokale URL die Vite toont (meestal `http://localhost:5173`).
 
-## Functionaliteit
-- Responsive publieke website
-- Werkplaatsbeheer via knop **Werkplaats**
-- Dashboard
-- Klanten
-- Machines
-- Opdrachten
-- Opdrachtstatus
-- Werkzaamheden en onderdelen
-- Werkbon / factuur printweergave
-- Lokale opslag via localStorage
-- Gekozen logo geïntegreerd in website en beheeromgeving
-- Werkplaatsradio met NPO Radio 1, Radio 2, 3FM, Qmusic, Radio 538, Sky Radio, Radio 10 en Radio Veronica
-- Persistente werkplaatsradio die blijft doorspelen bij wisselen van pagina
+De website opent standaard op http://localhost:5173.
 
-## Logo's
-De alternatieve logo's staan in `public/logos/` zodat eenvoudig kan worden gewisseld als Ludo een andere variant kiest.
+## Functies
 
-## Deployment
-Vercel deployment trigger: 29-10-2026.
+- Responsive publieke website, inclusief onderhoudspagina met aan/uit-schakelaar
+- Liquid Glass-huisstijl en Toro-hoofdfoto
+- Gescheiden beveiligde werkplaatsmodule en boekhoudportaal
+- Supabase Auth, medewerkersrollen en verplichte eerste wachtwoordwijziging
+- Intuïtieve klantkaarten met aanpasbare gegevens
+- Machines, werkopdrachten en onderdelen
+- Facturen, PDF-weergave en beveiligde Supabase-bestandsopslag
+- Werkplaatsradio die actief blijft bij navigatie binnen de module
 
-## Volgende productiestap
-Voor echte klantgegevens: authenticatie + centrale database (bijv. Supabase), RLS/beveiliging, server-side factuurnummering en PDF-generatie.
+## Technisch
+
+- Vite + React
+- Supabase Auth/PostgreSQL/RLS
+- `scripts/`: buildstappen en reconstructie van delen van de broncode
+- `source-parts/` en `asset-parts/`: nodig voor de build
+- Geen wachtwoorden, privé-API-sleutels of database-export in deze repository
+
+## Rechten
+
+Zie [LICENSE](LICENSE): alle rechten voorbehouden.
