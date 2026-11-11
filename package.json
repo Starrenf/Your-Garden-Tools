@@ -1,12 +1,12 @@
 {
   "name": "your-garden-tools",
   "private": true,
-  "version": "0.11.0",
+  "version": "0.12.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-ordinis-credit.mjs && node scripts/frontend-v15-public-pages.mjs && node scripts/frontend-v16-service-aan-huis.mjs && node scripts/frontend-v17-invoice-form.mjs && node scripts/frontend-v18-honda-mower-mark.mjs && node scripts/frontend-v19-invoice-documents.mjs && node scripts/frontend-v20-liquid-glass.mjs && node scripts/frontend-v21-customer-cards.mjs && node scripts/frontend-v22-toro-hero.mjs",
+    "predev": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-ordinis-credit.mjs && node scripts/frontend-v15-public-pages.mjs && node scripts/frontend-v16-service-aan-huis.mjs && node scripts/frontend-v17-invoice-form.mjs && node scripts/frontend-v18-honda-mower-mark.mjs && node scripts/frontend-v19-invoice-documents.mjs && node scripts/frontend-v20-liquid-glass.mjs && node scripts/frontend-v21-customer-cards.mjs && node scripts/frontend-v22-toro-hero.mjs && node scripts/frontend-v23-maintenance.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-ordinis-credit.mjs && node scripts/frontend-v15-public-pages.mjs && node scripts/frontend-v16-service-aan-huis.mjs && node scripts/frontend-v17-invoice-form.mjs && node scripts/frontend-v18-honda-mower-mark.mjs && node scripts/frontend-v19-invoice-documents.mjs && node scripts/frontend-v20-liquid-glass.mjs && node scripts/frontend-v21-customer-cards.mjs && node scripts/frontend-v22-toro-hero.mjs",
+    "prebuild": "node scripts/restore.mjs && node scripts/frontend-v8.mjs && node scripts/frontend-v9-supabase.mjs && node scripts/frontend-v10-first-login.mjs && node scripts/frontend-v11-login-ux.mjs && node scripts/frontend-v13-verified-logo.mjs && node scripts/frontend-v14-ordinis-credit.mjs && node scripts/frontend-v15-public-pages.mjs && node scripts/frontend-v16-service-aan-huis.mjs && node scripts/frontend-v17-invoice-form.mjs && node scripts/frontend-v18-honda-mower-mark.mjs && node scripts/frontend-v19-invoice-documents.mjs && node scripts/frontend-v20-liquid-glass.mjs && node scripts/frontend-v21-customer-cards.mjs && node scripts/frontend-v22-toro-hero.mjs && node scripts/frontend-v23-maintenance.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
