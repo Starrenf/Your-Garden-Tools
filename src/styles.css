@@ -17,3 +17,9 @@
 
 /* Ordinis merkvermelding: nieuw beeldmerk, behoud eigen YGT-huisstijl */
 .ordinis-mark img,.contact-ordinis-logo img{display:block;width:100%;height:100%;object-fit:contain}
+
+/* Toegankelijke privacy-/cookievermelding (geen toestemmingbanner zolang geen optionele trackers actief zijn). */
+.ygt-legal-links{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;margin:14px 0 0;font-size:12px}
+.ygt-legal-links a{color:#2f5e31;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.ygt-admin-privacy{display:block;padding:10px 14px;color:#c6dbca;text-decoration:underline;font-size:12px}
+.ygt-legal-links a:focus-visible,.ygt-admin-privacy:focus-visible{outline:2px solid #86b84a;outline-offset:3px}
